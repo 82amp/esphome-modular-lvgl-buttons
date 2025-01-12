@@ -1,0 +1,97 @@
+# Guition ESP32-S3-4848S040 480px X 480px Smart Screen
+# Hardware configuration file
+
+esphome:
+  min_version: 2024.11.0
+  #name_add_mac_suffix: true
+  platformio_options:
+    board_build.flash_mode: dio
+
+esp32:
+  board: esp32-s3-devkitc-1
+  variant: esp32s3
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+    sdkconfig_options:
+      COMPILER_OPTIMIZATION_SIZE: y
+      CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: "y"
+      CONFIG_ESP32S3_DATA_CACHE_64KB: "y"
+      CONFIG_ESP32S3_DATA_CACHE_LINE_64B: "y"
+      CONFIG_SPIRAM_FETCH_INSTRUCTIONS: y
+      CONFIG_SPIRAM_RODATA: y
+
+psram:
+  mode: octal
+  speed: 80MHz
+
+preferences:
+  flash_write_interval: 1min   
+  
+#-------------------------------------------
+# Internal outputs
+#-------------------------------------------
+
+output:
+    # Backlight LED
+  - platform: ledc
+    pin: 2
+    id: GPIO_BACKLIGHT
+    frequency: 100Hz
+
+light:
+  - platform: monochromatic
+    output: GPIO_BACKLIGHT
+    name: Display Backlight
+    id: display_backlight
+    restore_mode: ALWAYS_ON
+
+#-------------------------------------------
+# Display rpi_dpi_rgb
+#-------------------------------------------
+display:
+  - platform: rpi_dpi_rgb
+    id: rpi_disp
+    auto_clear_enabled: false
+    update_interval: never
+    dimensions:
+      width: 800
+      height: 480
+    de_pin:
+      number: 40
+    hsync_pin:
+      number: 39
+    vsync_pin:
+      number: 41
+    pclk_pin:
+      number: 42
+    color_order: RGB
+    pclk_frequency: 16MHz
+    
+    hsync_back_porch: 8
+    hsync_front_porch: 8
+    hsync_pulse_width: 4
+    vsync_back_porch: 8
+    vsync_front_porch: 8
+    vsync_pulse_width: 4
+
+    data_pins:
+      red:
+        - 45      #r1
+        - 48      #r2
+        - 47      #r3
+        - 21      #r4
+        - 14      #r5
+      green:
+        - 5       #g0
+        - 6       #g1
+        - 7       #g2
+        - 15      #g3
+        - 16      #g4
+        - 4       #g5
+      blue:
+        - 8       #b1
+        - 3       #b2
+        - 46      #b3
+        - 9       #b4
+        - 1       #b5
