@@ -13,7 +13,7 @@ substitutions:
 
   icon_font: light40
   text_font: roboto24
-  screen_height: '480px'
+  screen_height: '800px'
   screen_width: '480px'
   button_on_color: "burnt_sienna"
   button_off_color: "very_dark_gray"
