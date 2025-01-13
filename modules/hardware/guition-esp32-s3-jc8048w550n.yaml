@@ -39,6 +39,20 @@ output:
     id: GPIO_BACKLIGHT
     frequency: 100Hz
 
+ 
+    # Built in 240v relay
+  - id: internal_relay_1
+    platform: gpio
+    pin: 97
+
+    # Some versions of this switch have 3 relays
+  - id: internal_relay_2
+    platform: gpio
+    pin: 98
+  - id: internal_relay_3
+    platform: gpio
+    pin: 99
+
 light:
   - platform: monochromatic
     output: GPIO_BACKLIGHT
@@ -51,7 +65,7 @@ light:
 #-------------------------------------------
 display:
   - platform: rpi_dpi_rgb
-    id: rpi_disp
+    id: my_display
     auto_clear_enabled: false
     update_interval: never
     dimensions:
