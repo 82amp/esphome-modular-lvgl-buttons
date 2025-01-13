@@ -74,7 +74,7 @@ packages:
   images: !include modules/common/images.yaml
   
   # Harware description file
-  hardware: !include modules/hardware/guition-esp32-s3-jc8048w550.yaml
+  hardware: !include modules/hardware/guition-esp32-s3-jc8048w550n.yaml
   
   # Base settings for LVGL libary
   lvgl_time: !include modules/lvgl/base/lvgl_time_sntp.yaml
