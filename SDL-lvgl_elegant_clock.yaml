@@ -39,7 +39,7 @@ packages:
 
 api:
   encryption:
-    key: !secret encryption_key
+    key: "5Nyg8mGjxuO/DMeMqpRwyzbMz5wK6aJMMi8DNlEumWM=" # !secret encryption_key
 
 logger:
 

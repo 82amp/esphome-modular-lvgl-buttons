@@ -1,7 +1,7 @@
 ---
 sun:
-  latitude: !secret latitude
-  longitude: !secret longitude
+  latitude: 0 # !secret latitude
+  longitude: 0 # !secret longitude
   on_sunset:
     - elevation: -3.5°
       then:

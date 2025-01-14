@@ -43,7 +43,7 @@ output:
     # Built in 240v relay
   - id: internal_relay_1
     platform: gpio
-    pin: 97
+    pin: 2
 
     # Some versions of this switch have 3 relays
   - id: internal_relay_2
